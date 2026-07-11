@@ -26,7 +26,7 @@ export default function Maison() {
         </div>
 
         <div className="md:pt-24">
-          <p className="reveal mb-6 text-xs uppercase tracking-[0.3em] text-bone/50">
+          <p className="reveal mb-6 text-xs uppercase tracking-[0.3em] text-bone/60">
             {maison.materialsTitle}
           </p>
           <ul>
@@ -37,7 +37,7 @@ export default function Maison() {
                 style={{ '--d': `${i * 0.07}s` }}
               >
                 <span className="text-sm text-bone/85 sm:text-base">{mat.name}</span>
-                <span className="font-fraunces text-sm italic text-bone/45">{mat.origin}</span>
+                <span className="font-fraunces text-sm italic text-bone/60">{mat.origin}</span>
               </li>
             ))}
           </ul>

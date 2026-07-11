@@ -46,7 +46,7 @@ export default function Manifesto() {
           </span>
         ))}
       </p>
-      <p className="reveal mt-10 max-w-xs text-sm leading-relaxed text-bone/50" style={{ '--d': '0.3s' }}>
+      <p className="reveal mt-10 max-w-xs text-sm leading-relaxed text-bone/60" style={{ '--d': '0.3s' }}>
         {manifesto.note}
       </p>
     </section>

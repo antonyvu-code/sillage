@@ -80,7 +80,7 @@ export default function Collection() {
             />
 
             <div className="relative">
-              <p className="text-xs tracking-[0.2em] text-bone/40">{scent.no}</p>
+              <p className="text-xs tracking-[0.2em] text-bone/60">{scent.no}</p>
 
               {/* Sản phẩm */}
               <div className="scent-flacon my-6 flex justify-center">
@@ -95,7 +95,7 @@ export default function Collection() {
               <dl className="mt-6 space-y-3 border-t border-bone/10 pt-5 text-sm">
                 {['tete', 'coeur', 'fond'].map((key) => (
                   <div key={key} className="flex justify-between gap-4">
-                    <dt className="shrink-0 text-xs uppercase tracking-[0.2em] text-bone/40">
+                    <dt className="shrink-0 text-xs uppercase tracking-[0.2em] text-bone/60">
                       {labels[key]}
                     </dt>
                     <dd className="text-right text-bone/75">{scent.notes[key]}</dd>
@@ -104,7 +104,7 @@ export default function Collection() {
               </dl>
 
               <div className="mt-6 flex items-center justify-between border-t border-bone/10 pt-5 text-sm">
-                <span className="text-bone/50">{scent.size}</span>
+                <span className="text-bone/60">{scent.size}</span>
                 <span className="font-medium text-bone">{scent.price}</span>
               </div>
             </div>

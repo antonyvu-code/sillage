@@ -80,7 +80,7 @@ export default function Trail() {
             <h2 className="reveal font-fraunces text-[clamp(2rem,5vw,3.8rem)] font-light text-bone">
               {trail.title}
             </h2>
-            <p className="reveal max-w-xs text-sm text-bone/50" style={{ '--d': '0.15s' }}>
+            <p className="reveal max-w-xs text-sm text-bone/60" style={{ '--d': '0.15s' }}>
               {trail.sub}
             </p>
           </div>
@@ -103,7 +103,7 @@ export default function Trail() {
                   className="absolute inset-0"
                   style={{ opacity: phaseOpacity(phase) }}
                 >
-                  <p className="text-xs uppercase tracking-[0.3em] text-bone/50">
+                  <p className="text-xs uppercase tracking-[0.3em] text-bone/70">
                     {phase.label} · <span className="normal-case tracking-normal">{phase.time}</span>
                   </p>
                   <p className="mt-3 font-fraunces text-2xl italic text-bone/85 sm:text-3xl">

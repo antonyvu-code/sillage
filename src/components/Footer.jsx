@@ -62,7 +62,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-20 flex flex-col gap-2 border-t border-bone/10 py-8 text-xs text-bone/40 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-20 flex flex-col gap-2 border-t border-bone/10 py-8 text-xs text-bone/60 sm:flex-row sm:items-center sm:justify-between">
         <a href={`mailto:${footer.contact}`} className="transition-colors hover:text-bone/80">
           {footer.contact}
         </a>

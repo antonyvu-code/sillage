@@ -107,10 +107,14 @@ export default function Hero() {
           }}
         />
 
-        {/* Sản phẩm: flacon OMBRE */}
-        <div className="hero-flacon pointer-events-none absolute bottom-[14%] right-[4%] hidden md:block lg:right-[8%]">
+        {/* Sản phẩm: flacon OMBRE — mobile đứng góc trên phải (vùng trống
+            của layout justify-end), desktop về vị trí điện ảnh dưới phải */}
+        <div className="hero-flacon pointer-events-none absolute right-[2%] top-[14%] md:top-auto md:bottom-[14%] md:right-[4%] lg:right-[8%]">
           <div className="float-slow">
-            <Flacon scent={ombre} className="h-[46vh] max-h-[460px] drop-shadow-2xl" />
+            <Flacon
+              scent={ombre}
+              className="h-[30vh] max-h-[460px] drop-shadow-2xl md:h-[46vh]"
+            />
           </div>
         </div>
       </div>
@@ -150,7 +154,7 @@ export default function Hero() {
                 {hero.cta.label}
               </a>
             </Magnetic>
-            <span className="hidden items-center gap-2 text-xs text-bone/40 xl:flex">
+            <span className="hidden items-center gap-2 text-xs text-bone/60 xl:flex">
               <ArrowDown size={14} />
               {hero.hint}
             </span>
