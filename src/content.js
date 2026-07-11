@@ -1,7 +1,9 @@
 // ── SILLAGE — toàn bộ copy của trang nằm ở đây ──────────────────
-// Concept: sillage = vệt hương còn lại trong không khí sau khi bạn
-// rời đi. Mọi section đều kể câu chuyện đó. Sửa chữ ở đây là đổi
-// cả trang — không cần đụng vào components.
+// Concept: sillage = vệt hương còn lại sau khi bạn rời đi.
+// Storytelling: cả trang là MỘT BUỔI TỐI kể bằng mùi hương —
+// mỗi section một chương, có timestamp nối tiếp nhau:
+// 18:47 thay đồ → 18:56 hai lần xịt → 19:00–23:00 hương sống trên
+// da → flashback sáu tuần trước ở atelier → 00:14 épilogue.
 
 export const content = {
   brand: 'SILLAGE',
@@ -15,22 +17,29 @@ export const content = {
 
   hero: {
     eyebrow: 'Maison de parfum · Berlin',
-    // Dòng cuối in nghiêng (Fraunces italic) — điểm nhấn của headline
     headline: ['The part of you', 'that stays.'],
     italicWord: 'stays.',
-    sub: 'Sillage is the trail a fragrance leaves in the air. We compose small-batch eaux de parfum for the moment after you’ve left the room.',
+    sub: 'Sillage is the trail a fragrance leaves in the air. This is one evening, told in scent — scroll, and wear it hour by hour.',
     cta: { label: 'Explore the collection', href: '#collection' },
-    hint: 'Scroll — a scent unfolds over hours',
+    hint: 'Scroll — the evening begins',
   },
 
   manifesto: {
-    eyebrow: 'Manifesto',
+    scene: {
+      chapter: 'Prologue',
+      time: '18:47',
+      text: 'You’re getting dressed. The night hasn’t decided what it will be yet.',
+    },
     lines: ['A perfume is not', 'worn for yourself.', 'It’s for the room', 'you leave behind.'],
     note: 'Macerated six weeks. Bottled only when it lingers.',
   },
 
   collection: {
-    eyebrow: 'The collection',
+    scene: {
+      chapter: 'Chapitre I',
+      time: '18:56',
+      text: 'Two sprays on the collarbone. Choose who comes with you tonight.',
+    },
     title: 'Three ways to linger',
     noteLabels: { tete: 'Tête', coeur: 'Cœur', fond: 'Fond' },
     scents: [
@@ -77,7 +86,11 @@ export const content = {
   },
 
   trail: {
-    eyebrow: 'The trail',
+    scene: {
+      chapter: 'Chapitre II',
+      time: '19:00 – 23:00',
+      text: 'The city does its part. Your skin does the rest.',
+    },
     title: 'Four hours of OMBRE',
     sub: 'Scroll slowly. This is the scent as your skin wears it.',
     // in/out: khoảng tiến trình scroll (0→1) mà phase hiện diện.
@@ -105,11 +118,15 @@ export const content = {
         out: 1.2,
       },
     ],
-    endLine: 'What’s left at 4:00 is the sillage.',
+    endLine: 'What’s left at 23:00 is the sillage.',
   },
 
   maison: {
-    eyebrow: 'La maison',
+    scene: {
+      chapter: 'Chapitre III',
+      time: 'six weeks earlier',
+      text: 'Every evening begins long before it starts — in maceration tanks in Wedding.',
+    },
     title: 'Slow by design',
     body: [
       'Sillage is a two-person atelier in Berlin-Wedding. Each formula is macerated for six weeks, chilled, filtered and rested — then bottled by hand in batches of two hundred flacons.',
@@ -127,6 +144,11 @@ export const content = {
   },
 
   footer: {
+    scene: {
+      chapter: 'Épilogue',
+      time: '00:14',
+      text: 'You’ve gone. The room is still deciding whether to forget you.',
+    },
     ctaTitle: 'Find your scent',
     ctaBody:
       'Order the discovery set — three 2 ml sprays, credited in full against your first flacon.',

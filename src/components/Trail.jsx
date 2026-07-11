@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { content } from '../content.js'
+import Scene from './Scene.jsx'
 
 // Section chữ ký: scroll = thời gian. Track cao 340vh, stage sticky
 // giữ nguyên viewport; tiến trình scroll (0→1) được ghi vào CSS var
@@ -24,8 +25,9 @@ export default function Trail() {
       const total = rect.height - window.innerHeight
       const p = Math.min(1, Math.max(0, -rect.top / total))
       stage.style.setProperty('--p', p.toFixed(4))
+      // Đồng hồ chạy theo giờ của câu chuyện: 19:00 → 23:00
       const mins = Math.round(p * 240)
-      clock.textContent = `${Math.floor(mins / 60)}:${String(mins % 60).padStart(2, '0')}`
+      clock.textContent = `${19 + Math.floor(mins / 60)}:${String(mins % 60).padStart(2, '0')}`
     }
 
     const onScroll = () => {
@@ -73,9 +75,7 @@ export default function Trail() {
         />
 
         <div className="relative">
-          <p className="reveal mb-4 text-xs uppercase tracking-[0.3em] text-bone/50">
-            {trail.eyebrow}
-          </p>
+          <Scene scene={trail.scene} className="mb-6" />
           <div className="flex flex-wrap items-end justify-between gap-4">
             <h2 className="reveal font-fraunces text-[clamp(2rem,5vw,3.8rem)] font-light text-bone">
               {trail.title}
@@ -93,7 +93,7 @@ export default function Trail() {
               ref={clockRef}
               className="font-fraunces text-[clamp(5rem,16vw,12rem)] font-light leading-none text-bone tabular-nums"
             >
-              0:00
+              19:00
             </p>
 
             <div className="relative mt-8 h-24">

@@ -1,15 +1,14 @@
 import { content } from '../content.js'
+import Scene from './Scene.jsx'
 
 export default function Maison() {
   const { maison } = content
 
   return (
     <section id="maison" className="px-6 py-24 md:px-12 md:py-32 lg:px-16">
+      <Scene scene={maison.scene} className="mb-12" />
       <div className="grid gap-14 md:grid-cols-2 md:gap-20">
         <div>
-          <p className="reveal mb-4 text-xs uppercase tracking-[0.3em] text-bone/50">
-            {maison.eyebrow}
-          </p>
           <h2 className="reveal font-fraunces text-[clamp(2rem,5vw,3.8rem)] font-light text-bone">
             {maison.title}
           </h2>

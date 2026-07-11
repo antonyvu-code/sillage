@@ -1,13 +1,12 @@
 import { content } from '../content.js'
+import Scene from './Scene.jsx'
 
 export default function Manifesto() {
   const { manifesto } = content
 
   return (
     <section className="px-6 py-32 md:px-12 md:py-44 lg:px-16">
-      <p className="reveal mb-10 text-xs uppercase tracking-[0.3em] text-bone/50">
-        {manifesto.eyebrow}
-      </p>
+      <Scene scene={manifesto.scene} className="mb-12" />
       <p className="font-fraunces font-light leading-[1.15] text-bone">
         {manifesto.lines.map((line, i) => (
           <span

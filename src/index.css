@@ -82,12 +82,28 @@ body {
   animation: auraDrift 16s ease-in-out infinite;
 }
 
+/* Flacon lơ lửng — thở rất chậm, như đặt trên mặt nước */
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
   .vapor,
-  .aura {
+  .aura,
+  .float-slow {
     animation: none;
     opacity: 1;
   }

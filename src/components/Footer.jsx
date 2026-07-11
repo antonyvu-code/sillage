@@ -1,10 +1,14 @@
 import { content } from '../content.js'
+import Scene from './Scene.jsx'
 
 export default function Footer() {
   const { footer, brand } = content
 
   return (
     <footer className="relative overflow-hidden px-6 pt-28 md:px-12 lg:px-16">
+      <div className="mx-auto flex max-w-xl flex-col items-center text-center">
+        <Scene scene={footer.scene} className="mb-12 flex flex-col items-center" />
+      </div>
       <div className="mx-auto max-w-xl text-center">
         <h2 className="reveal font-fraunces text-[clamp(2rem,5vw,3.4rem)] font-light text-bone">
           {footer.ctaTitle}

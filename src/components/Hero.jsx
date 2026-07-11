@@ -1,8 +1,10 @@
 import { ArrowDown } from 'lucide-react'
 import { content } from '../content.js'
+import Flacon from './Flacon.jsx'
 
 export default function Hero() {
-  const { hero } = content
+  const { hero, collection } = content
+  const ombre = collection.scents.find((s) => s.name === 'OMBRE')
 
   return (
     <section id="top" className="relative flex min-h-svh flex-col justify-end overflow-hidden">
@@ -21,6 +23,16 @@ export default function Hero() {
           background: 'radial-gradient(closest-side, rgba(167,143,191,0.45), transparent 70%)',
         }}
       />
+
+      {/* Sản phẩm: flacon OMBRE lơ lửng, hơi thở rất chậm */}
+      <div
+        className="vapor pointer-events-none absolute bottom-[14%] right-[4%] hidden md:block lg:right-[8%]"
+        style={{ '--d': '0.6s' }}
+      >
+        <div className="float-slow">
+          <Flacon scent={ombre} className="h-[46vh] max-h-[460px] drop-shadow-2xl" />
+        </div>
+      </div>
 
       <div className="relative px-6 pb-14 pt-32 sm:pb-16 md:px-12 md:pb-20 lg:px-16">
         <p
@@ -56,14 +68,14 @@ export default function Hero() {
           >
             {hero.sub}
           </p>
-          <div className="vapor flex items-center gap-6" style={{ '--d': '0.9s' }}>
+          <div className="vapor flex items-center gap-6 md:pr-[24vh]" style={{ '--d': '0.9s' }}>
             <a
               href={hero.cta.href}
               className="rounded-full bg-bone px-6 py-3 text-sm font-medium text-smoke transition-colors hover:bg-ambre"
             >
               {hero.cta.label}
             </a>
-            <span className="hidden items-center gap-2 text-xs text-bone/40 lg:flex">
+            <span className="hidden items-center gap-2 text-xs text-bone/40 xl:flex">
               <ArrowDown size={14} />
               {hero.hint}
             </span>
