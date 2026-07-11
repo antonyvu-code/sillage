@@ -1,32 +1,138 @@
 // ── SILLAGE — toàn bộ copy của trang nằm ở đây ──────────────────
-// Đây là file "linh hồn": đổi chữ ở đây là đổi cả trang, không cần
-// đụng vào App.jsx. Draft bên dưới là bản đề xuất — hãy sửa theo
-// giọng bạn muốn (xem ghi chú ở cuối file).
+// Concept: sillage = vệt hương còn lại trong không khí sau khi bạn
+// rời đi. Mọi section đều kể câu chuyện đó. Sửa chữ ở đây là đổi
+// cả trang — không cần đụng vào components.
 
 export const content = {
   brand: 'SILLAGE',
 
-  nav: ['Home', 'Collections', 'Maison', 'Journal'],
+  nav: [
+    { label: 'Collection', href: '#collection' },
+    { label: 'The Trail', href: '#trail' },
+    { label: 'Maison', href: '#maison' },
+  ],
+  navCta: { label: 'Find your scent', href: '#collection' },
 
-  navCta: 'Find Your Scent',
+  hero: {
+    eyebrow: 'Maison de parfum · Berlin',
+    // Dòng cuối in nghiêng (Fraunces italic) — điểm nhấn của headline
+    headline: ['The part of you', 'that stays.'],
+    italicWord: 'stays.',
+    sub: 'Sillage is the trail a fragrance leaves in the air. We compose small-batch eaux de parfum for the moment after you’ve left the room.',
+    cta: { label: 'Explore the collection', href: '#collection' },
+    hint: 'Scroll — a scent unfolds over hours',
+  },
 
-  badge: 'Fine Fragrance · Composed by Hand',
+  manifesto: {
+    eyebrow: 'Manifesto',
+    lines: ['A perfume is not', 'worn for yourself.', 'It’s for the room', 'you leave behind.'],
+    note: 'Macerated six weeks. Bottled only when it lingers.',
+  },
 
-  // Mỗi phần tử là một dòng của h1 (ngăn cách bằng <br/>)
-  headline: ['Scent is memory', 'you can wear —', 'made to linger.'],
+  collection: {
+    eyebrow: 'The collection',
+    title: 'Three ways to linger',
+    noteLabels: { tete: 'Tête', coeur: 'Cœur', fond: 'Fond' },
+    scents: [
+      {
+        no: 'No. 01',
+        name: 'AUBE',
+        tagline: 'dawn, before anyone speaks',
+        accent: '#D9A05E',
+        notes: {
+          tete: 'bergamot, pink pepper',
+          coeur: 'orris, mimosa',
+          fond: 'white musk, cedar',
+        },
+        size: '50 ml',
+        price: '€120',
+      },
+      {
+        no: 'No. 02',
+        name: 'VERTIGE',
+        tagline: 'green enough to make you dizzy',
+        accent: '#93B08A',
+        notes: {
+          tete: 'galbanum, fig leaf',
+          coeur: 'violet leaf, cypress',
+          fond: 'vetiver, oakmoss',
+        },
+        size: '50 ml',
+        price: '€120',
+      },
+      {
+        no: 'No. 03',
+        name: 'OMBRE',
+        tagline: 'the shadow that follows you out',
+        accent: '#A78FBF',
+        notes: {
+          tete: 'smoked tea, saffron',
+          coeur: 'iris, incense',
+          fond: 'leather, amber, vetiver',
+        },
+        size: '50 ml',
+        price: '€135',
+      },
+    ],
+  },
 
-  paragraph:
-    'Small-batch eaux de parfum built around single raw materials — vetiver, iris, smoke — and left to rest until they speak.',
+  trail: {
+    eyebrow: 'The trail',
+    title: 'Four hours of OMBRE',
+    sub: 'Scroll slowly. This is the scent as your skin wears it.',
+    // in/out: khoảng tiến trình scroll (0→1) mà phase hiện diện.
+    // Fond có out > 1 vì base notes không bao giờ biến mất — đó chính là sillage.
+    phases: [
+      {
+        label: 'Tête',
+        time: 'the first 20 minutes',
+        notes: ['smoked tea', 'saffron'],
+        in: 0.0,
+        out: 0.38,
+      },
+      {
+        label: 'Cœur',
+        time: '20 minutes to 2 hours',
+        notes: ['iris', 'incense'],
+        in: 0.3,
+        out: 0.72,
+      },
+      {
+        label: 'Fond',
+        time: '2 hours — and after you’re gone',
+        notes: ['leather', 'amber', 'vetiver'],
+        in: 0.64,
+        out: 1.2,
+      },
+    ],
+    endLine: 'What’s left at 4:00 is the sillage.',
+  },
 
-  heroCta: 'Explore the Collection',
+  maison: {
+    eyebrow: 'La maison',
+    title: 'Slow by design',
+    body: [
+      'Sillage is a two-person atelier in Berlin-Wedding. Each formula is macerated for six weeks, chilled, filtered and rested — then bottled by hand in batches of two hundred flacons.',
+      'We list every raw material we use. If it doesn’t linger, it doesn’t leave the atelier.',
+    ],
+    materialsTitle: 'From the material index',
+    materials: [
+      { name: 'Orris butter', origin: 'Firenze, Italy' },
+      { name: 'Vetiver', origin: 'Les Cayes, Haiti' },
+      { name: 'Ambrette seed', origin: 'Kerala, India' },
+      { name: 'Galbanum', origin: 'Zagros, Iran' },
+      { name: 'Smoked lapsang', origin: 'Fujian, China' },
+      { name: 'Leather accord', origin: 'our atelier, Berlin' },
+    ],
+  },
 
-  video:
-    'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_204221_5339e40b-e73d-4ab0-9c65-79c18c66fd50.mp4',
+  footer: {
+    ctaTitle: 'Find your scent',
+    ctaBody:
+      'Order the discovery set — three 2 ml sprays, credited in full against your first flacon.',
+    ctaLabel: 'Order the discovery set',
+    contact: 'atelier@maison-sillage.com',
+    address: 'Gerichtstraße 23 · 13347 Berlin',
+    legal: '© 2026 Sillage Parfums',
+  },
 }
-
-// TODO(bạn): tinh chỉnh copy.
-// Ràng buộc thiết kế cần giữ:
-//  - headline: 3 dòng, mỗi dòng ≤ 4 từ (h1 bị khóa leading-[1.1],
-//    dòng dài sẽ wrap xấu ở text-7xl)
-//  - paragraph: ≤ 20 từ (bị khóa max-w-sm/max-w-lg)
-//  - badge: một cụm danh từ, không phải câu
