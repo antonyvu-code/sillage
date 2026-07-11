@@ -29,27 +29,8 @@ body {
   outline-offset: 3px;
 }
 
-/* ── Vapor type: text condenses out of blur, like scent becoming visible ── */
-@keyframes vaporIn {
-  from {
-    opacity: 0;
-    filter: blur(14px);
-    transform: translateY(26px);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
-  }
-}
-
-.vapor {
-  opacity: 0;
-  animation: vaporIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: var(--d, 0s);
-}
-
-/* ── Scroll reveal: same vocabulary, triggered by IntersectionObserver ── */
+/* ── Scroll reveal: text condenses out of blur, triggered by IntersectionObserver.
+     (Hero dùng GSAP timeline riêng cho choreography cinematic.) ── */
 .reveal {
   opacity: 0;
   filter: blur(10px);
@@ -101,7 +82,6 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .vapor,
   .aura,
   .float-slow {
     animation: none;

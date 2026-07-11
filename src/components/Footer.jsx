@@ -1,11 +1,42 @@
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import { content } from '../content.js'
 import Scene from './Scene.jsx'
+import Magnetic from './Magnetic.jsx'
 
 export default function Footer() {
   const { footer, brand } = content
+  const scope = useRef(null)
+
+  // Wordmark trôi dạt sang trái theo scroll (scrub) — vệt hương
+  // đang rời khỏi trang, đúng nghĩa đen.
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia()
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.fromTo(
+          '.wordmark',
+          { xPercent: 6, opacity: 0.6 },
+          {
+            xPercent: -10,
+            opacity: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: scope.current,
+              start: 'top bottom',
+              end: 'bottom bottom',
+              scrub: 0.8,
+            },
+          },
+        )
+      })
+    },
+    { scope },
+  )
 
   return (
-    <footer className="relative overflow-hidden px-6 pt-28 md:px-12 lg:px-16">
+    <footer ref={scope} className="relative overflow-hidden px-6 pt-28 md:px-12 lg:px-16">
       <div className="mx-auto flex max-w-xl flex-col items-center text-center">
         <Scene scene={footer.scene} className="mb-12 flex flex-col items-center" />
       </div>
@@ -19,13 +50,16 @@ export default function Footer() {
         >
           {footer.ctaBody}
         </p>
-        <a
-          href={`mailto:${footer.contact}?subject=Discovery%20set`}
-          className="reveal mt-8 inline-block rounded-full bg-bone px-7 py-3 text-sm font-medium text-smoke transition-colors hover:bg-ambre"
-          style={{ '--d': '0.24s' }}
-        >
-          {footer.ctaLabel}
-        </a>
+        <div className="reveal mt-8" style={{ '--d': '0.24s' }}>
+          <Magnetic>
+            <a
+              href={`mailto:${footer.contact}?subject=Discovery%20set`}
+              className="inline-block rounded-full bg-bone px-7 py-3 text-sm font-medium text-smoke transition-colors hover:bg-ambre"
+            >
+              {footer.ctaLabel}
+            </a>
+          </Magnetic>
+        </div>
       </div>
 
       <div className="mt-20 flex flex-col gap-2 border-t border-bone/10 py-8 text-xs text-bone/40 sm:flex-row sm:items-center sm:justify-between">
@@ -39,7 +73,7 @@ export default function Footer() {
       {/* Wordmark tự phai dần về bên phải — chính nó cũng có sillage */}
       <p
         aria-hidden="true"
-        className="pointer-events-none select-none whitespace-nowrap pb-6 font-fraunces text-[clamp(4rem,18vw,16rem)] font-light leading-none tracking-[0.12em] text-bone/25"
+        className="wordmark pointer-events-none select-none whitespace-nowrap pb-6 font-fraunces text-[clamp(4rem,18vw,16rem)] font-light leading-none tracking-[0.12em] text-bone/25"
         style={{
           maskImage: 'linear-gradient(90deg, black 35%, transparent 92%)',
           WebkitMaskImage: 'linear-gradient(90deg, black 35%, transparent 92%)',

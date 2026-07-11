@@ -1,4 +1,6 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import { content } from '../content.js'
 import Scene from './Scene.jsx'
 
@@ -13,36 +15,34 @@ export default function Trail() {
   const stageRef = useRef(null)
   const clockRef = useRef(null)
 
-  useEffect(() => {
-    const track = trackRef.current
-    const stage = stageRef.current
-    const clock = clockRef.current
-    let raf = 0
+  // GSAP scrub 0.6: tiến trình --p "đuổi theo" scroll với độ trễ mượt —
+  // đồng hồ và các tầng note lướt như kim đồng hồ thật thay vì giật
+  // theo từng tick của bánh xe chuột.
+  useGSAP(
+    () => {
+      const stage = stageRef.current
+      const clock = clockRef.current
+      const proxy = { p: 0 }
 
-    const update = () => {
-      raf = 0
-      const rect = track.getBoundingClientRect()
-      const total = rect.height - window.innerHeight
-      const p = Math.min(1, Math.max(0, -rect.top / total))
-      stage.style.setProperty('--p', p.toFixed(4))
-      // Đồng hồ chạy theo giờ của câu chuyện: 19:00 → 23:00
-      const mins = Math.round(p * 240)
-      clock.textContent = `${19 + Math.floor(mins / 60)}:${String(mins % 60).padStart(2, '0')}`
-    }
-
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update)
-    }
-
-    update()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-      if (raf) cancelAnimationFrame(raf)
-    }
-  }, [])
+      gsap.to(proxy, {
+        p: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: trackRef.current,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0.6,
+        },
+        onUpdate: () => {
+          stage.style.setProperty('--p', proxy.p.toFixed(4))
+          // Đồng hồ chạy theo giờ của câu chuyện: 19:00 → 23:00
+          const mins = Math.round(proxy.p * 240)
+          clock.textContent = `${19 + Math.floor(mins / 60)}:${String(mins % 60).padStart(2, '0')}`
+        },
+      })
+    },
+    { scope: trackRef },
+  )
 
   // opacity = min(fade-in theo p, fade-out theo p) — thuần CSS calc,
   // không re-render React trong lúc scroll.
